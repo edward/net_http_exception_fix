@@ -1,0 +1,73 @@
+= Net::HTTP Exception Fix
+
+Using Net::HTTP can lead to headaches when it comes to rescuing all the different kinds of exceptions it might raise.
+
+This is a hotfix to give those common exceptions that pop up from Net:HTTP usage a shared parent exception class.
+
+== Usage
+
+    require 'net_http_exception_fix'
+    
+    begin
+      response = Net::HTTP.get_response(uri)
+    rescue Net::HTTPBroken => e
+      ...
+    end
+
+== Thanks
+
+Mad props to Tammer Saleh [1] and all the find folks on Stack Overflow [2] who confirmed my WTFness when it comes to handling Net::HTTP exceptions right.
+
+[1] http://tammersaleh.com/posts/rescuing-net-http-exceptions
+[2] http://stackoverflow.com/questions/5370697/whats-the-best-way-to-handle-exceptions-from-nethttp
+
+== Running tests
+
+Run the tests with
+
+  $ rake test
+
+== Download
+
+Currently this library is available with git from:
+
+  git://github.com/edward/net_http_exception_fix.git
+
+== Installation
+
+=== From Git
+
+You can check out the latest source from git:
+
+  > git pull git://github.com/edward/net_http_exception_fix.git
+
+=== From Ruby Gems
+
+Installation from RubyGems
+
+  > gem install net_http_exception_fix
+
+== Author
+
+Edward Ocampo-Gooding <edward@edwardog.net>
+
+== Copyright
+
+Copyright (C) 2011 Edward Ocampo-Gooding
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to
+deal in the Software without restriction, including without limitation the
+rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+sell copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER 
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
